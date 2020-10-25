@@ -1,0 +1,112 @@
+{% extends 'base.html'%}
+
+{% block head%}
+  	<title>YangoniansTech|Charity</title>
+	{% load static %}
+{%endblock%}
+
+{% block body%}
+	<div>
+		<div class="section landing">
+			<div class="row">
+				<div class="col s12 m12 l6 greyBackground centerContent">
+					<img class="myanmarImage" src="/media/myanmar.png" alt="myanmar country picture" />
+				</div>
+
+				<div class="col s12 m12 l6 centerContent about">
+					<!-- <h5 class="marginThree center">
+						<span class="superSpan"> Covid 19 </span>​ရောဂါအတွက် လိုအပ်​သော<span class="superSpan"> info </span>များကို စု​ဆောင်း​ပေးထား​သော
+						​​နေရာ ဖြစ်သည်။
+					</h5> -->
+					<h5 class="marginThree center">ဤစာမျက်နှာအကြောင်းအကျဥ်းချုပ်</h5>
+					<p>
+						မြန်မာနိုင်ငံတွင် ဖြစ်ပွားနေသော COVID-19 ရောဂါအတွက် လိုအပ်သော ကျန်းမာရေးဆိုင်ရာ (ဆေးရုံ/ဆေးခန်း/ဆေးရုံကား…) အစရှိသည့် သတင်းအချက်အလက်များကို လွယ်ကူစွာ ရှာဖွေနိုင်ရန် Yangonians Tech မှ နည်းပညာပိုင်းဆိုင်ရာ ကူညီပံ့ပိုး ပေးထားပါသည်။
+					</p>
+					<p>
+						ဤ Web Page သည် သင့်ပတ်ဝန်းကျင် အနီးရှိ Fever clinic များ/ ဆေးရုံ၊ ဆေးခန်းများ/ အရေးကြီးဆက်သွယ်နိုင်သော လူနာတင်ကားများ/ ကျန်းမာရေးနှင့် ပတ်သက်သည့် သတင်း အချက်အလက်များကို စုံစမ်းနိုင်သည့် Call Center များ/ Mobile clinic များ အစရှိသည့် ဆက်သွယ်နိုင်သည့် ဖုန်းနံပတ်၊ လိပ်စာ၊ ဆေးခန်းဖွင့်ချိန် များ ကို မြို့နယ်အလိုက် စုစည်းတင်ပြထားသည့် အပြင် COVID-19 သိကောင်းစရာများကိုလည်း ဖော်ပြပေးထားပါသည်။
+					</p>
+					<p class="note">
+						ဤ Web Page တွင် ပါဝင်သော သတင်းအချက်အလက်များသည် သတင်း channelများ /လူမှုကူညီရေး အသင်းများ/ Social Media Platform များမှ စုဆောင်း ဖော်ပြထားခြင်းဖြစ်ပါသည်။
+					</p>
+				</div>
+			</div>
+		</div>
+			
+		<div class="section conditions">
+			<div class="row">
+				<div class="col s12 m12 l6 centerContent">
+					<h5 class="semBold marginFour">
+						သိ​ကောင်းစရာ <span class="superSpan"> Covid-19 </span> လက္ခနာများ 
+					</h5>
+					<ul class="listStyleChange">
+						<li>မောပန်းခြင်း</li>
+						<li>အသက်ရှုကြပ်ခြင်း </li>
+						<li>အဆစ်နာခြငိး </li>
+						<li>ရင်ဘက်အောင့်ခြင်း </li>
+						<li>ချောင်းဆိုးခြင်း </li>
+						<li>အန့ပြောက်ခြင်း </li>
+						<li>နှာစေးခြင်း </li>
+						<li>မျက်လုံးနာခြင်း </li>
+						<li>အရသာပျက်ခြင်း </li>
+						<li>ခေါင်းကိုက်ခြင်း </li>
+						<li>ချွဲထွက်ခြင်း </li>
+						<li>အစာစားချင်စိတ်ပျောက်ခြင်း  </li>
+						<li>လည်းပင်းနာခြင်း  </li>
+						<li>ခေါင်းမူး </li>
+					</ul>
+				</div>
+
+				<div class="col s12 m12 l6 boxStyle">
+					<div class="One">
+						<span class="marginOne center"><i class="fas fa-clinic-medical fa-4x"></i></span>
+						<p class="marginTwo center">ဆက်သွယ်နိင်​သော Fever Clinic များ</p>
+						<a class="waves-effect waves-light customButton" href="{%url 'charity:service-list'%}?type=fever">စုံစမ်းရန်</a>
+					</div>
+					<div class="Two">
+						<span class="marginOne center"><i class="fas fa-hospital fa-4x"></i></span>
+						<p class="marginTwo center">ဆက်သွယ်နိင်​သော Q-center များ</p>
+						<a class="waves-effect waves-light customButton" href="{%url 'charity:service-list'%}?type=Q">စုံစမ်းရန်</a>
+					</div>
+					<div class="Three">
+						<span class="marginOne center"><i class="fas fa-ambulance fa-4x"></i></span>
+						<p class="marginTwo center">ဆက်သွယ်နိင်​သော ​ဆေးရုံကားများ</p>
+						<a class="waves-effect waves-light customButton" href="{%url 'charity:service-list'%}?type=ambulance">စုံစမ်းရန်</a>
+					</div>
+					<div class="One">
+						<span class="marginOne center"><i class="fas fa-user-nurse fa-4x"></i></span>
+						<p class="marginTwo center">ဆက်သွယ်နိင်​သော ဆရာဝန်များ</p>
+						<a class="waves-effect waves-light customButton" href="{%url 'charity:service-list'%}?type=public">စုံစမ်းရန်</a>
+					</div>
+					<div class="Two">
+						<span class="marginOne center"><i class="fas fa-phone fa-4x"></i></span>
+						<p class="marginTwo center">ဆက်သွယ်နိင်​သော Call-center များ</p>
+						<a class="waves-effect waves-light customButton" href="{%url 'charity:service-list'%}?type=hotline">စုံစမ်းရန်</a>
+					</div>
+				</div>
+			</div>	
+		</div>
+
+		<div class="section Faq">
+			<h5 class="center faqbold">Frequently Asked Questions</h5>
+			<ul class="collapsible expandable">
+				{%for faq in faqs%}
+					<li>
+						<div class="collapsible-header">{{faq.question}}<i class="material-icons right">arrow_drop_down</i></div>
+						<div class="collapsible-body"><span>{{faq.answer}}</span></div>
+					</li>
+				{%endfor%}
+			</ul>
+		</div>
+
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('.collapsible').collapsible();
+		});
+	</script>
+
+{%endblock%}
+
+{% block static%}
+	<link rel="stylesheet" href="{% static 'charity/style.css' %} " type="text/css"> 
+{%endblock%}

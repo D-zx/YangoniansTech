@@ -1,0 +1,105 @@
+{% extends '../base.html'%}
+
+{% block head%}
+  <title>Clinic List</title>
+{%endblock%}
+
+{% block body%}
+	<h4>ဆက်သွယ်နိင်​သော ဆရာဝန်များ</h4>
+	<form class="search-form">
+		<div class="row">
+			<div class="input-field col s12 m5 l3">
+				<select class="township" name="township">
+					<option value="" disabled>သင်နေထိုင်ရာမြို့နယ်</option>
+					{%for value, name in townships%}
+					<option value="{{value}}">{{name|title}}</option>
+					{%endfor%}
+				</select>
+				<label>မြို့နယ်</label>
+			</div>
+			<div class="input-field col s12 m5 l3">
+				<select class="region" name="region">
+					{%for value, name in regions%}
+					<option value="{{value}}">{{name|title}}</option>
+					{%endfor%}
+				</select>
+				<label>ပြည်နယ်/တိုင်း</label>
+			</div>
+			<div class="input-field col s12 m5 l3">
+				<input type="hidden" name="type" value="{{request.GET.type}}">
+				<select class="type" name="type">
+					<option value="">အားလုံး</option>
+					{%for value, name in types%}
+					<option value="{{value}}">{{name|title}}</option>
+					{%endfor%}
+				</select>
+				<label>မြို့နယ်</label>
+			</div>
+		</div>	
+	</form>
+
+	<div class="row service-list">
+	{%for service in object_list%}
+		<div class="col s12 m6 l4">
+			<div class="card blue-grey darken-1 clinic-list">
+				<div class="card-content white-text">
+					<span class="card-title">{{service.name|title}}{{service.is_open|safe}}</span>
+					<dl class="row">
+						<dt class="col s2 center"><i class="fas fa-tasks fa-lg"></i></dt>
+						<dd class="col s10">{{service.get_s_type_display|default:"friend"}}</dd>
+					</dl>
+					<dl class="row">
+						<dt class="col s2 center"><i class="fas fa-map-marked-alt fa-lg"></i></dt>
+						<dd class="col s10">{{service.location|default:"friend"}}</dd>
+					</dl>
+					<dl class="row">
+						<dt class="col s2 center"><i class="far fa-calendar-alt fa-lg"></i></dt>
+						<dd class="col s10">
+							{%if openinghour_set.all%}
+								<ul>
+
+									{%for oh in service.openinghour_set.all%}
+										<li>{{oh}}</li>
+									{%endfor%}
+								</ul>
+							{%else%}
+							<span>-</span>
+							{%endif%}
+									
+						</dd>
+					</dl>
+					<dl class="row">
+						<dt class="col s2 center"><i class="fas fa-phone-alt fa-lg"></i></dt>
+						<dd class="col s10">
+							{%for phone in service.phone%}
+								<a href="tel:{{phone}}">{{phone}}</a>
+								{%if not forloop.last%},{%endif%}
+							{%endfor%}
+						</dd>	
+					</dl>
+					<dl class="row">
+						<dt class="col s2 center"><i class="far fa-clipboard fa-lg"></i></dt>
+						<dd class="col s10"><p>{{service.description|default:"-"}}</p></dd>
+					</dl>
+				</div>
+			</div>
+		</div>
+	{%endfor%}
+	</div>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+		    $('.township').val("{{request.GET.township}}")
+		    $('.region').val("{{request.GET.region}}")
+		    $('.type').val("{{request.GET.type}}")
+		    $('select').formSelect();
+		    $('select').on('change', function(){
+		    	$('form').submit();
+		    });
+		  });
+		        
+	</script>
+
+{%endblock%}
+
+
