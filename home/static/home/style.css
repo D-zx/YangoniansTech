@@ -1,0 +1,24 @@
+nav{
+	background-color: #e17f4c;
+	height: 65px! important;
+}
+
+.footer-image, .footer-info {
+	height: 15rem;
+	width: 100%;
+	position: relative;
+}
+
+
+.footer-info a {
+	color: #808080;
+}
+
+.yt-logo {
+	height: 60px;
+	padding: 5px;
+}
+
+.by-yt {
+	font: italic 12px/30px Georgia, serif;
+}

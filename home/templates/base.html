@@ -16,9 +16,16 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <!-- fontawsome -->
-    <script src="https://kit.fontawesome.com/5e2855313a.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://kit.fontawesome.com/5e2855313a.js" crossorigin="anonymous"></script> -->
 
-    {% load static %} 
+    {% load static %}
+    <!-- fontawsome -->
+    <link rel="stylesheet" type="text/css" href="{% static 'fontawesome/css/all.min.css' %}" />
+    <script src="{% static 'fontawesome/js/all.js' %}"></script> 
+
+    <!-- style.css -->
+    <link rel="stylesheet" href="{% static 'home/style.css' %} " type="text/css"> 
+    <link rel="stylesheet" href="{% static 'charity/style.css' %} " type="text/css"> 
 
     {% block head%}
     {%endblock%}
@@ -45,8 +52,6 @@
 </body>
 
     {% block static%}
-        <link rel="stylesheet" href="{% static 'charity/style.css' %} " type="text/css"> 
     {%endblock%}
-
 
 </html>

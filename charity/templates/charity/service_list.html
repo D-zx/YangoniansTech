@@ -17,7 +17,7 @@
 				</select>
 				<label>မြို့နယ်</label>
 			</div>
-			<div class="input-field col s12 m5 l3">
+			<div class="input-field col s12 m5 l3" style="display: none;">
 				<select class="region" name="region">
 					{%for value, name in regions%}
 					<option value="{{value}}">{{name|title}}</option>
@@ -46,26 +46,22 @@
 					<span class="card-title">{{service.name|title}}{{service.is_open|safe}}</span>
 					<dl class="row">
 						<dt class="col s2 center"><i class="fas fa-tasks fa-lg"></i></dt>
-						<dd class="col s10">{{service.get_s_type_display|default:"friend"}}</dd>
+						<dd class="col s10">{{service.get_s_type_display}}</dd>
 					</dl>
+					{%if service.address%}
 					<dl class="row">
 						<dt class="col s2 center"><i class="fas fa-map-marked-alt fa-lg"></i></dt>
-						<dd class="col s10">{{service.location|default:"friend"}}</dd>
+						<dd class="col s10">{{service.address}}</dd>
 					</dl>
+					{%endif%}
 					<dl class="row">
 						<dt class="col s2 center"><i class="far fa-calendar-alt fa-lg"></i></dt>
 						<dd class="col s10">
-							{%if openinghour_set.all%}
-								<ul>
-
-									{%for oh in service.openinghour_set.all%}
-										<li>{{oh}}</li>
-									{%endfor%}
-								</ul>
-							{%else%}
-							<span>-</span>
-							{%endif%}
-									
+							<ul>
+								{%for oh in service.openinghour_set.all%}
+									<li>{{oh}}</li>
+								{%endfor%}
+							</ul>
 						</dd>
 					</dl>
 					<dl class="row">
@@ -77,10 +73,12 @@
 							{%endfor%}
 						</dd>	
 					</dl>
+					{%if service.description%}
 					<dl class="row">
 						<dt class="col s2 center"><i class="far fa-clipboard fa-lg"></i></dt>
-						<dd class="col s10"><p>{{service.description|default:"-"}}</p></dd>
+						<dd class="col s10"><p>{{service.description}}</p></dd>
 					</dl>
+					{%endif%}
 				</div>
 			</div>
 		</div>
@@ -90,7 +88,10 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 		    $('.township').val("{{request.GET.township}}")
-		    $('.region').val("{{request.GET.region}}")
+		   	var region = "{{request.GET.region}}"
+		   	if (region){
+			    $('.region').val(region)
+		   	}
 		    $('.type').val("{{request.GET.type}}")
 		    $('select').formSelect();
 		    $('select').on('change', function(){

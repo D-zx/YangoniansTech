@@ -6,9 +6,7 @@
 	margin:0;padding:0;
 	-webkit-box-sizing:border-box;
 	box-sizing:border-box}
-nav{
-	background-color:#e17f4c
-}
+
 .superSpan{
 	color:#f07d19;
 	font-weight:700
@@ -66,7 +64,7 @@ nav{
 	opacity:80%
 	}
 .landing .centerContent{
-	padding: 3rem;
+	padding: 2.5rem;
 	}
 .landing .spanSpace{
 	display:block;
@@ -82,8 +80,10 @@ nav{
 	.landing .semBold{
 		line-height:3rem
 		}
-	.landing .centerContent{
-		padding:0;height:500px
+	.landing .centerContent, .conditions .centerContent{
+		padding:0;
+		height: auto;
+		margin-bottom: 3rem;
 		}
 	.landing h5{
 		font-size:2rem
@@ -142,7 +142,10 @@ nav{
 	width:50%;
 	height:250px
 }
-.conditions .boxStyle .One img,.conditions .boxStyle .Two img,.conditions .boxStyle .Three img,.conditions .boxStyle .Four img{
+.conditions .boxStyle .One img,
+.conditions .boxStyle .Two img,
+.conditions .boxStyle .Three img,
+.conditions .boxStyle .Four img{
 	width:70px;
 	}
 .conditions .boxStyle .One p,
@@ -171,7 +174,7 @@ nav{
 	.conditions .boxStyle .Three,
 	.conditions .boxStyle .Four{
 		width:100%;
-		height:400px
+		height:250px;
 		}
 	}
 .Faq{
@@ -242,11 +245,16 @@ nav{
 }
 .about h5 {
 	text-align: center;
+	line-height: 3.5rem;
+	font-size: 2rem;
 }
 
 .about p {
 	padding: 0.5rem;
 	text-align: justify;
+	line-height: 1.7rem;
+	margin-bottom: 0.5rem;
+	text-indent: 2rem;
 }
 
 .note {
@@ -259,26 +267,8 @@ nav{
 	font-size: 100%;
 }	
 
-.footer-image, .footer-info {
-	height: 15rem;
-	width: 100%;
-	position: relative;
-}
-
-.by-yt {
-	font: italic 12px/30px Georgia, serif;
-}
-
-.footer-info a {
-	color: #808080;
-}
-
-.yt-logo {
-	height: 95px;
-	margin-top: -10px;
-}
-
-.brand-logo{
-	margin-top: 7px;
-	font-family: Georgia;
+.service-list .badge {
+	position: absolute;
+	right: 15px;
+	top: 15px;
 }
