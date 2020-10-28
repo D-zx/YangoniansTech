@@ -12,8 +12,8 @@ class Service(models.Model):
 		('hlaingtharyar', 'လှိုင်သာယာ'),
 		('insein', 'အင်းစိန်'),
 		('shwepyithar', 'ရွှေပြည်သာ'),
-		('eastdagon', 'အရှ့ဒဂုံ'),
-		('northdagon', 'အရှ့ဒဂုံ'),
+		('eastdagon', 'အရှေ့ဒဂုံ'),
+		('northdagon', 'မြောက်ဒဂုံ'),
 		('southdagon', 'တောင်ဒဂုံ'),
 		('northokkalapa', 'မြောက်ဥက္ကလာပ'),
 		('southokkalapa', 'တောင်ဥက္ကလာပ'),
@@ -40,11 +40,11 @@ class Service(models.Model):
 
 	C_TYPE = [
 		('Q', 'Quarantine Center'),
-		('hospital', 'Hospital'),
-		('public', 'Public Clinic'),
-		('fever', 'Fever Clinic'),
-		('volunteer', 'Volunteer'),
-		('amulance', 'Amulance'),
+		('hospital', 'ဆေးရုံ'),
+		('public', 'ကိုယ်ပိုင်ဆေးခန်း'),
+		('fever', 'ဖျားနာဆေးခန်း'),
+		('volunteer', 'ပရဟိတ'),
+		('amulance', 'လူနာတင်ကား'),
 		('hotline', 'Hotline'),
 	]
 	name = models.CharField(max_length=200, default='')

@@ -30,9 +30,11 @@ class ServiceList(ListView):
 		township = self.request.GET.get('township') or ''
 		region = self.request.GET.get('region') or ''
 		name = self.request.GET.get('name') or ''
+		s_type = self.request.GET.get('type') or ''
 		search['township__contains'] = township
 		search['name__contains'] = name
 		search['region__contains'] = region
+		search['s_type__contains'] = s_type
 		queryset = super(ListView, self).get_queryset()
 		queryset = queryset.filter(**search).order_by('id')
 		return queryset

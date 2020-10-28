@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = '(#8$d2uzjt1*iu^vs)&xdx@)-21%53u%%1bmeg%b$9czvoq%hm'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '178.128.23.146', 'http://yangonianstech.com/', 'yangonianstech.com', 'www.yangonianstech.com']
 
 
 # Application definition
@@ -79,9 +79,9 @@ WSGI_APPLICATION = 'YangoniansTech.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'YangoniansTech',
-        'USER': 'djangotest',
-        'PASSWORD': '123456789',
+        'NAME': 'yangonianstech',
+        'USER': 'yangonianstech_admin',
+        'PASSWORD': '8366ammk',
         'HOST': 'localhost',
         'PORT': '',
 
@@ -125,7 +125,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'YangoniansTech/media')
