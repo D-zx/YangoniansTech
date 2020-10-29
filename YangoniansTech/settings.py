@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 SECRET_KEY = '(#8$d2uzjt1*iu^vs)&xdx@)-21%53u%%1bmeg%b$9czvoq%hm'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '178.128.23.146', 'http://yangonianstech.com/', 'yangonianstech.com', 'www.yangonianstech.com']
 
@@ -79,9 +79,9 @@ WSGI_APPLICATION = 'YangoniansTech.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'yangonianstech',
-        'USER': 'yangonianstech_admin',
-        'PASSWORD': '8366ammk',
+        'NAME': 'YangoniansTech',
+        'USER': 'djangotest',
+        'PASSWORD': '123456789',
         'HOST': 'localhost',
         'PORT': '',
 
