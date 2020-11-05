@@ -6,31 +6,44 @@ from django.contrib.postgres.fields import ArrayField
 
 class Service(models.Model):
 	TOWNSHIP = [
-		('tamwe', 'တာမွေ'),
-		('mingalartaungnyunt', 'မင်္ဂလာတောင်ညွ့န်'),
+		('', 'မြို့နယ်အားလုံး'),
+		('alone', 'အလုံ'),
+		('bahan', 'ဗဟန်း'),
 		('botahtaung', 'ဗိုလ်တစ်ထောင်'),
+		('dagon', 'ဒဂုံ'),
+		('dagon seikkan', 'ဒဂုံဆိပ်ကမ်း'),
+		('dala', 'ဒလ'),
+		('dawbon', 'ဒေါပုံ'),
+		('eastdagon', 'အရှေ့ဒဂုံ'),
+		('hlaing', 'လှိုင်'),
+		('hmawbi', 'မှော်ဘီ'),
 		('hlaingtharyar', 'လှိုင်သာယာ'),
 		('insein', 'အင်းစိန်'),
-		('shwepyithar', 'ရွှေပြည်သာ'),
-		('eastdagon', 'အရှေ့ဒဂုံ'),
-		('northdagon', 'မြောက်ဒဂုံ'),
-		('southdagon', 'တောင်ဒဂုံ'),
-		('northokkalapa', 'မြောက်ဥက္ကလာပ'),
-		('southokkalapa', 'တောင်ဥက္ကလာပ'),
-		('kyimyindaing', 'ကြည့်မြင်တိုင်'),
-		('hmawbi', 'မှော်ဘီ'),
-		('alone', 'အလုံ'),
-		('yankin', 'ရန်ကင်း'),
-		('hlaing', 'လှိုင်'),
 		('kamayut', 'ကမာရွတ်'),
-		('tharkayta', 'သာကေတ'),
-		('mayangone', 'မရမ်းကုန်း'),
-		('tontay', ' တွံတေး'),
-		('dawbon', 'ဒေါပုံ'),
-		('thanlyin', 'သန်လျင်'),
+		('kyauktada', 'ကျောက်တံတား'),
+		('kyimyindaing', 'ကြည့်မြင်တိုင်'),
 		('kawhmu', 'ကော့မှူး'),
 		('kunchankone', 'ကွမ်းခြံကုန်း'),
-		('bahan', 'ဗဟန်း'),
+		('lanmadaw', 'လမ်းမတော်'),
+		('lattha', 'လသာ'),
+		('mayangone', 'မရမ်းကုန်း'),
+		('mingalartaungnyunt', 'မင်္ဂလာတောင်ညွ့န်'),
+		('mingaladon', 'မင်္ဂလာဒုံ'),
+		('northdagon', 'မြောက်ဒဂုံ'),
+		('northokkalapa', 'မြောက်ဥက္ကလာပ'),
+		('pabedan', 'ပန်ပဲတန်း'),
+		('pazundaung', 'ပုဇွန်တောင်'),
+		('sanchaung', 'စမ်းချောင်း'),
+		('seikkan', 'ဆိပ်ကမ်း'),
+		('shwepyithar', 'ရွှေပြည်သာ'),
+		('southdagon', 'တောင်ဒဂုံ'),
+		('southokkalapa', 'တောင်ဥက္ကလာပ'),
+		('tamwe', 'တာမွေ'),
+		('tharkayta', 'သာကေတ'),
+		('thanlyin', 'သန်လျင်'),
+		('tontay', ' တွံတေး'),
+		('thingangyun', 'သင်္ဃန်းကျွန်း'),
+		('yankin', 'ရန်ကင်း'),
 	]
 
 	REGION =[
@@ -39,17 +52,17 @@ class Service(models.Model):
 	]
 
 	C_TYPE = [
-		('Q', 'Quarantine Center'),
+		('homeservice', 'ဆရာဝန်အိမ်ပင့်'),
 		('hospital', 'ဆေးရုံ'),
 		('public', 'ကိုယ်ပိုင်ဆေးခန်း'),
 		('fever', 'ဖျားနာဆေးခန်း'),
-		('volunteer', 'ပရဟိတ'),
-		('amulance', 'လူနာတင်ကား'),
-		('hotline', 'Hotline'),
+		('tele', 'Tele Consulation'),
+		('ambulance', 'လူနာတင်ကား'),
+		('hotline', 'Call Center'),
 	]
 	name = models.CharField(max_length=200, default='')
 	location = models.CharField(max_length=200, default='', blank=True)
-	township = models.CharField(max_length=200, choices=TOWNSHIP, default="bahan")
+	township = models.CharField(max_length=200, choices=TOWNSHIP, blank=True)
 	region = models.CharField(max_length=200, choices=REGION, default="yangon")
 	s_type = models.CharField(max_length=200, choices=C_TYPE, default="public")
 	phone = ArrayField(models.CharField(max_length=200), blank=True)
@@ -67,7 +80,7 @@ class Service(models.Model):
 		return "<span class='new badge red lighten-2' data-badge-caption='Closed Now'></span>"
 
 	def address(self):
-		return self.location +' '+ self.get_township_display() +' ' + self.get_region_display()
+		return self.location +'၊ '+ self.get_township_display() +'၊ ' + self.get_region_display()
 
 
 class OpeningHour(models.Model):
@@ -97,3 +110,6 @@ class OpeningHour(models.Model):
 class FAQ(models.Model):
 	question = models.CharField(max_length=200, default='')
 	answer = models.TextField(max_length=500, default='')
+
+	def __str__(self):
+		return self.question

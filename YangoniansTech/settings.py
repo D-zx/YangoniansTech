@@ -26,7 +26,8 @@ SECRET_KEY = '(#8$d2uzjt1*iu^vs)&xdx@)-21%53u%%1bmeg%b$9czvoq%hm'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '178.128.23.146', 'http://yangonianstech.com/', 'yangonianstech.com', 'www.yangonianstech.com']
+
+ALLOWED_HOSTS = ['localhost', '178.128.23.146', 'http://yangonianstech.com/', 'https://yangonianstech.com/', 'yangonianstech.com', 'www.yangonianstech.com']
 
 
 # Application definition

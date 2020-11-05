@@ -20,9 +20,9 @@ class ServiceList(ListView):
 
 	def get_context_data(self, **kwargs):
 		context = super().get_context_data(**kwargs)
+		context['types'] = Service._meta.get_field('s_type').choices
 		context['townships'] = Service._meta.get_field('township').choices
 		context['regions'] = Service._meta.get_field('region').choices
-		context['types'] = Service._meta.get_field('s_type').choices
 		return context
 
 	def get_queryset(self):
@@ -31,10 +31,13 @@ class ServiceList(ListView):
 		region = self.request.GET.get('region') or ''
 		name = self.request.GET.get('name') or ''
 		s_type = self.request.GET.get('type') or ''
-		search['township__contains'] = township
+		if township:
+			search['township__iexact'] = township
+		if region:
+			search['region__iexact'] = region
+		if s_type:
+			search['s_type__contains'] = s_type
 		search['name__contains'] = name
-		search['region__contains'] = region
-		search['s_type__contains'] = s_type
 		queryset = super(ListView, self).get_queryset()
 		queryset = queryset.filter(**search).order_by('id')
 		return queryset

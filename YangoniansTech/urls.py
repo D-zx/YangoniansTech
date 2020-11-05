@@ -19,7 +19,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('yt-admin/', admin.site.urls),
     path('', include('home.urls', namespace='yt')),
     path('charity/', include('charity.urls', namespace='charity')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
