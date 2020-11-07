@@ -1,0 +1,14 @@
+{% extends 'errors/error_base.html'%}
+
+{% block head%}
+    <title>403 | YangoniansTech</title>
+    {% load static %}
+{%endblock%}
+
+{% block body%}
+	<span class="error-code">4</span>
+	<span class="error-code span-0">0</span>
+	<span class="error-code">3</span>
+	<p class="error-msg">Opps, You don't have permission to access this page.</p>
+    <a class="go-back" href="{%url 'yt:home'%}">Go Back to Home</a>    
+{%endblock%}
