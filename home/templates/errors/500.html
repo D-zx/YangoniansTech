@@ -1,0 +1,14 @@
+{% extends 'errors/error_base.html'%}
+
+{% block head%}
+    <title>500 | YangoniansTech</title>
+    {% load static %}
+{%endblock%}
+
+{% block body%}
+	<span class="error-code">5</span>
+	<span class="error-code">0</span>
+	<span class="error-code span-0">0</span>
+	<p class="error-msg">Oh no!, something went wrong :(</p>
+    <a class="go-back" href="{%url 'yt:home'%}">Go Back to Home</a>    
+{%endblock%}

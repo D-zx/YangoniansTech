@@ -11,3 +11,21 @@ def list_value(list, name='Q'):
         elif x == name:
             return "ဆက်သွယ်နိုင်သော %sများ"%y
     return "အမျိုးအစားအားအားလုံး"
+
+@register.filter
+def services_title(title):
+	if title == "hotline":
+		return "Call Center"
+	elif title == "homeservice":
+		return "home service"
+	elif title == "public":
+		return "Public Clinic"
+	elif title == "fever":
+		return "fever clinic"
+	elif title == "tele":
+		return "tele consulation"
+	elif title:
+		return title
+	else:
+		return "All Service"
+

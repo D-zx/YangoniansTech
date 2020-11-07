@@ -23,3 +23,8 @@ urlpatterns = [
     path('', include('home.urls', namespace='yt')),
     path('charity/', include('charity.urls', namespace='charity')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+handler404 = 'home.views.page_not_found_view'
+handler500 = 'home.views.error_view'
+handler403 = 'home.views.permission_denied_view'
+handler400 = 'home.views.bad_request_view'

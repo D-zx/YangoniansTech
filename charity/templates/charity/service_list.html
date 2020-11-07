@@ -1,7 +1,7 @@
 {% extends '../base.html'%}
 {% load charity_tag %}
 {% block head%}
-  <title>{{types|list_value:request.GET.type}}များ</title>
+  <title>{{request.GET.type|services_title|title}}s | YangoniansTech</title>
 {%endblock%}
 
 {% block body%}
