@@ -10,7 +10,7 @@ def list_value(list, name='Q'):
             return "အိမ်သို့ ပင့်ဆောင်နိုင်သော ဆရာဝန်များ"
         elif x == name:
             return "ဆက်သွယ်နိုင်သော %sများ"%y
-    return "အမျိုးအစားအားအားလုံး"
+    return "အမျိုးအစားအားလုံး"
 
 @register.filter
 def services_title(title):

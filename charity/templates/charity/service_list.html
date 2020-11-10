@@ -20,7 +20,7 @@
 			<div class="select2-input col s12 m5 l3">
 				<label for="township">မြို့နယ်</label>
 					<select id="township" name="township">
-						<option value="" disabled>ရှာဖွေလိုသောမြို့နယ်</option>
+						<option value="disabled" disabled>ရှာဖွေလိုသောမြို့နယ်</option>
 						{%for value, name in townships%}
 						<option value="{{value}}">{{name|title}}</option>
 						{%endfor%}
@@ -55,18 +55,30 @@
 						<dd class="col s10">{{service.address}}</dd>
 					</dl>
 					{%else%}
-					<dl class="row">
-						<dt class="col s2 center"><i class="fas fa-map-marked-alt fa-lg"></i></dt>
-						<dd class="col s10">{{service.get_region_display}}</dd>
-					</dl>
+						{%if service.township %}
+							<dl class="row">
+								<dt class="col s2 center"><i class="fas fa-map-marked-alt fa-lg"></i></dt>
+								<dd class="col s10">{{service.get_township_display}}၊ {{service.get_region_display}}</dd>
+							</dl>
+						{%else%}
+							<dl class="row">
+								<dt class="col s2 center"><i class="fas fa-map-marked-alt fa-lg"></i></dt>
+								<dd class="col s10">{{service.get_region_display}}</dd>
+							</dl>
+						{%endif%}
+					
 					{%endif%}
 					<dl class="row">
 						<dt class="col s2 center"><i class="far fa-calendar-alt fa-lg"></i></dt>
 						<dd class="col s10">
 							<ul>
+								{%if service.openinghour_set.all%}
 								{%for oh in service.openinghour_set.all%}
 									<li>{{oh}}</li>
 								{%endfor%}
+								{%else%}
+								-
+								{%endif%}
 							</ul>
 						</dd>
 					</dl>
