@@ -29,3 +29,8 @@ def services_title(title):
 	else:
 		return "All Service"
 
+@register.filter
+def township_list(list, value):
+	for x , y in list:
+		if x == value:
+			return y
