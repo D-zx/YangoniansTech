@@ -4,16 +4,18 @@ from django.utils.safestring import mark_safe
 register = template.Library()
 
 @register.filter
-def list_value(list, name='Q'):
-    for x , y in list:
-        if name == 'homeservice':
-            return "အိမ်သို့ ပင့်ဆောင်နိုင်သော ဆရာဝန်များ"
-        elif x == name:
-            return "ဆက်သွယ်နိုင်သော %sများ"%y
-    return "အမျိုးအစားအားလုံး"
+def type_list(list, req):
+	value = req.get('type')
+	for x , y in list:
+		if value == 'homeservice':
+			return "အိမ်သို့ ပင့်ဆောင်နိုင်သော ဆရာဝန်များ"
+		elif x == value:
+			return "ဆက်သွယ်နိုင်သော %sများ"%y
+	return "အမျိုးအစားအားလုံး"
 
 @register.filter
-def services_title(title):
+def services_title(name):
+	title = name.get('type')
 	if title == "hotline":
 		return "Call Center"
 	elif title == "homeservice":
@@ -31,6 +33,12 @@ def services_title(title):
 
 @register.filter
 def township_list(list, value):
-	for x , y in list:
-		if x == value:
-			return y
+	township = value.get('township')
+	if township is not None:
+		for x , y in list:
+			if township == "":
+				return "မြို့နယ်အားလုံး"
+			elif x == township:
+				return "ရွေးချယ်လိုက်သော "+y + "မြို့နယ်"
+	else:
+		return "မြို့နယ်အားလုံး"

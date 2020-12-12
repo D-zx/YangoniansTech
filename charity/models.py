@@ -59,6 +59,8 @@ class Service(models.Model):
 		('tele', 'Tele Consulation'),
 		('ambulance', 'လူနာတင်ကား'),
 		('hotline', 'Call Center'),
+		('hotel-q', 'Hotel Quarantine'),
+		('q', 'Quarantine Center'),
 	]
 	name = models.CharField(max_length=200, default='')
 	location = models.CharField(max_length=200, default='', blank=True)
@@ -66,6 +68,7 @@ class Service(models.Model):
 	region = models.CharField(max_length=200, choices=REGION, default="yangon")
 	s_type = models.CharField(max_length=200, choices=C_TYPE, default="public")
 	phone = ArrayField(models.CharField(max_length=200), blank=True)
+	canTest = models.BooleanField(default=False)
 	description = models.TextField(max_length=500, default='', blank=True)
 
 	def __str__(self):

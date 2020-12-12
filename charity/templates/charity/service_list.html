@@ -1,11 +1,11 @@
 {% extends '../base.html'%}
 {% load charity_tag %}
 {% block head%}
-  <title>{{request.GET.type|services_title|title}}s | YangoniansTech</title>
+  <title>{{request.GET|services_title|title}}s | YangoniansTech</title>
 {%endblock%}
 
 {% block body%}
-	<h4 class='services-header'>{{types|list_value:request.GET.type}}</h4>
+	<h4 class='services-header'>{{types|type_list:request.GET}}</h4>
 	<form class="search-form">
 		<div class="row">
 			<div class="select2-input col s12 m5 l3">
@@ -33,6 +33,15 @@
 					{%endfor%}
 				</select>
 				<label>ပြည်နယ်/တိုင်း</label>
+			</div>
+			<div class="input-field col s12">
+				<div class="switch canTest">
+				    <label>
+				      <span>COVID-19 စစ်ဆေးနိုင်သော နေရာများ</span>
+				      <input type="checkbox" name="cantest" {%if canTest%}checked{%endif%}>
+				      <span class="lever"></span>
+				    </label>
+				  </div>
 			</div>
 		</div>	
 	</form>
@@ -103,9 +112,13 @@
 			</div>
 		{%endfor%}
 	{%else%}
-		<p>ရွေးချယ်လိုက်သော {{townships|township_list:request.GET.township}} မြို့နယ် အတွက် {{types|list_value:request.GET.type}}၏ သတင်းအချက်အလက် မရှိသေးပါ။</p>
+		<p>{{townships|township_list:request.GET}} အတွက် {{types|type_list:request.GET}}၏ သတင်းအချက်အလက် မရှိသေးပါ။</p>
 		<br/>
-		<a class="" href="{%url 'charity:service-list'%}?type={{request.GET.type}}">မြို့နယ်အားလုံး ရှိ {{types|list_value:request.GET.type}}၏ သတင်းအချက်အလက်များကို စုံစမ်းရန်</a>
+		{% if request.GET.township %}
+			<a class="" href="{%url 'charity:service-list'%}?type={{request.GET.type}}">မြို့နယ်အားလုံး ရှိ {{types|type_list:request.GET}}၏ သတင်းအချက်အလက်များကို စုံစမ်းရန်</a>
+		{%else%}
+			<a class="" href="{%url 'charity:service-list'%}?type=">အမျိုးအစားအားလုံး၏ သတင်းအချက်အလက်များကို စုံစမ်းရန်</a>
+		{%endif%}
 		<br/>
 		<br/>
 		<a class="" href="https://docs.google.com/forms/d/e/1FAIpQLSdPxa3Qm2tgqcxeEpVt3cVSrGQ0tJ4MIKItQwr3XJCKVcpyog/viewform" target="_blank">အကြံပြုရန်</a>
@@ -115,6 +128,7 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 		    $('#township').val("{{request.GET.township}}")
+		    console.log("{{request.GET.township}}")
 		   	var region = "{{request.GET.region}}"
 		   	if (region){
 			    $('#region').val(region)
@@ -134,6 +148,10 @@
 				if ($('#type').val() == 'hotline'){
 					$('#township').val('')
 				}
+		    	$('form').submit();
+		    });
+
+		    $(".canTest").find("input[type=checkbox]").on("change",function() {
 		    	$('form').submit();
 		    });
 		  });
